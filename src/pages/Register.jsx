@@ -35,7 +35,7 @@ function Register() {
 
     return (
         <div>
-            <div className="container mt-4">
+            <div className="container mt-4 ">
                 <div className="card">
                     <h1>User Registration</h1>
                     <hr />

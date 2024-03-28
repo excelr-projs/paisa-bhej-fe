@@ -33,7 +33,7 @@ function Login() {
 
     return (
         <div>
-            <div className="container">
+            <div className="container border rounded">
                 <div className="row">
                     <h2>Login</h2>
                     <hr />
@@ -58,6 +58,7 @@ function Login() {
                                 onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
+                        <br/>
                         <button type="submit" className="btn btn-primary">Login</button>
                     </form>
                 </div>
