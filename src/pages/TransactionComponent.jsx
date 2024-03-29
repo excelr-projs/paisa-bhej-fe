@@ -6,37 +6,56 @@ function TransactionComponent() {
   const [toDate, setToDate] = useState('');
   const [transactionType, setTransactionType] = useState('');
   const [transactions, setTransactions] = useState([]);
+  const [error, setError] = useState('');
 
   const handleViewByWallet = async () => {
     try {
       const response = await fetch(`/transaction/transactions/${walletId}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch transactions by wallet');
+      }
       const data = await response.json();
       console.log('Transactions by wallet:', data);
       setTransactions(data);
+      setError('');
     } catch (error) {
       console.error('Error viewing transactions by wallet:', error);
+      setTransactions([]);
+      setError('Error viewing transactions by wallet. Please try again.');
     }
   };
 
   const handleViewByDate = async () => {
     try {
-      const response = await fetch(`/transaction/transaction?from=${fromDate}&to=${toDate}`);
+      const response = await fetch(`/transaction/transactions?from=${fromDate}&to=${toDate}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch transactions by date');
+      }
       const data = await response.json();
       console.log('Transactions by date:', data);
       setTransactions(data);
+      setError('');
     } catch (error) {
       console.error('Error viewing transactions by date:', error);
+      setTransactions([]);
+      setError('Error viewing transactions by date. Please try again.');
     }
   };
 
   const handleViewAll = async () => {
     try {
-      const response = await fetch(`/transaction/transaction${transactionType ? `/${transactionType}` : ''}`);
+      const response = await fetch(`/transaction/transactions${transactionType ? `/${transactionType}` : ''}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch all transactions');
+      }
       const data = await response.json();
       console.log('All transactions:', data);
       setTransactions(data);
+      setError('');
     } catch (error) {
       console.error('Error viewing all transactions:', error);
+      setTransactions([]);
+      setError('Error viewing all transactions. Please try again.');
     }
   };
 
@@ -44,7 +63,7 @@ function TransactionComponent() {
     <div className='container border rounded'>
       <h2>View Transactions</h2>
 
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
             <h3>By Wallet</h3>
@@ -62,7 +81,7 @@ function TransactionComponent() {
         </div>
       </form>
 
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
             <h3>By Date</h3>
@@ -87,7 +106,7 @@ function TransactionComponent() {
         </div>
       </form>
 
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
             <h3>All Transactions</h3>
@@ -105,10 +124,14 @@ function TransactionComponent() {
         </div>
       </form>
 
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
       <h3>Transactions</h3>
       <ul>
         {transactions.map(transaction => (
-          <li key={transaction.id}>{transaction.amount} - {transaction.description}</li>
+          <li key={transaction.id}>
+            <strong>Transaction ID:</strong> {transaction.id} - <strong>Amount:</strong> {transaction.amount} - <strong>Description:</strong> {transaction.description}
+          </li>
         ))}
       </ul>
     </div>

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/login'; 
 import CreateAccountForm from './pages/CreateAccountForm';
+import Profile from './pages/Profile'
 import TransactionComponent from './pages/TransactionComponent';
 import Wallet from './pages/Wallet';
 import GetBalance from './pages/walletoperation/GetBalance';
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/createaccount" element={<CreateAccountForm />} />
           <Route path="/transaction" element={<TransactionComponent />} />
+          <Route path="/profile" element={<Profile />} />
 
           <Route path="/wallet/*" element={<Wallet />}>
             <Route path="getbalance" element={<GetBalance />} />
