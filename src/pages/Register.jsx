@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Register() {
     const [customerID, setCustomerId] = useState(1); // Initialize customer ID to 1
@@ -69,7 +70,7 @@ function Register() {
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                             />
-                        </div>
+                          </div>
                         <div className="form-group">
                             <label>Wallet</label>
                             <input
@@ -79,8 +80,9 @@ function Register() {
                                 value={wallet}
                                 onChange={(event) => setWallet(event.target.value)}
                             />
+                            <Link to ="/update">Update Register</Link>
+                        <button type="submit" className="btn btn-primary m-4">Save</button>
                         </div>
-                        <button type="submit" className="btn btn-primary mt-4">Save</button>
                     </form>
                 </div>
             </div>

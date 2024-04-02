@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link } from 'react-router-dom';
+
 
 function Login() {
     const [mobileNumber, setMobileNumber] = useState("");
@@ -33,7 +34,7 @@ function Login() {
 
     return (
         <div>
-            <div className="container border rounded">
+            <div className="container border rounded p-4">
                 <div className="row">
                     <h2>Login</h2>
                     <hr />
@@ -59,8 +60,10 @@ function Login() {
                             />
                         </div>
                         <br/>
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <Link to ="/Register">New Register</Link>
+                        <button type="submit" className="btn btn-primary ms-4">Login</button>
                     </form>
+
                 </div>
             </div>
         </div>

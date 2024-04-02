@@ -4,13 +4,14 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/login'; 
 import CreateAccountForm from './pages/CreateAccountForm';
-import Profile from './pages/Profile'
 import TransactionComponent from './pages/TransactionComponent';
 import Wallet from './pages/Wallet';
 import GetBalance from './pages/walletoperation/GetBalance';
 import CreateWallet from './pages/walletoperation/CreateWallet';
 import FundTransfer from './pages/walletoperation/FundTransfer';
 import HandelDeposit from './pages/walletoperation/HandelDeposit';
+import UpdateCostumer from './pages/UpdateCostumer';
+
 
 function App() {
   return (
@@ -22,14 +23,15 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/createaccount" element={<CreateAccountForm />} />
           <Route path="/transaction" element={<TransactionComponent />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path='/update' element={<UpdateCostumer/>}/>
+          
 
-          <Route path="/wallet/*" element={<Wallet />}>
-            <Route path="getbalance" element={<GetBalance />} />
-            <Route path="createwallet" element={<CreateWallet />} />
-            <Route path="fundtransfer" element={<FundTransfer />} />
-            <Route path="deposit" element={<HandelDeposit />} />
-          </Route>
+          <Route path="/wallet/" element={<Wallet />}/>
+          <Route path="getbalance" element={<GetBalance />} />
+          <Route path="createwallet" element={<CreateWallet />} />
+          <Route path="fundtransfer" element={<FundTransfer />} />
+          <Route path="deposit" element={<HandelDeposit />} />
+          
         </Routes>
       </BrowserRouter>
     </div>
