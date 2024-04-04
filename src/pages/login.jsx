@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate ,Link } from 'react-router-dom';
-
+import './login.css';
 
 function Login() {
     const [mobileNumber, setMobileNumber] = useState("");
@@ -34,37 +34,59 @@ function Login() {
 
     return (
         <div>
-            <div className="container border rounded p-4">
-                <div className="row">
-                    <h2>Login</h2>
-                    <hr />
+            <div >
+                
+                <div className="loginborder">
+
+
+                     
+
+
+                    <h2>Sign In</h2>
+                    
                     <form onSubmit={handleLogin}>
                         <div className="form-group">
-                            <label>Mobile Number</label>
+                            
                             <input
                                 type="text"
-                                className="form-control"
+                                className="horizontal-lines"
                                 placeholder="Enter Mobile Number"
                                 value={mobileNumber}
                                 onChange={(event) => setMobileNumber(event.target.value)}
                             />
                         </div>
+
                         <div className="form-group">
-                            <label>Password</label>
+                           
                             <input
                                 type="password"
-                                className="form-control"
+                                className="horizontal-lines"
                                 placeholder="Enter Password"
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
-                        <br/>
-                        <Link to ="/Register">New Register</Link>
-                        <button type="submit" className="btn btn-primary ms-4">Login</button>
+                        
+
+
+                        
+
+                        <div id="loginicon">
+                        <button type="submit" classname="btn">Sign In</button>
+                        </div>
                     </form>
 
                 </div>
+                <div id="dou" >
+                    Do you have an account? 
+
+                    
+                    <Link to ="/Register"  id="registernow">  Register</Link>
+                    
+                        
+                       
+                        </div>
+                
             </div>
         </div>
     );
