@@ -72,7 +72,7 @@ function Login() {
                         
 
                         <div id="loginicon">
-                        <button type="submit" classname="btn">Sign In</button>
+                        <button type="submit" className="btn">Sign In</button>
                         </div>
                     </form>
 

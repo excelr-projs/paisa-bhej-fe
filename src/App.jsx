@@ -24,8 +24,6 @@ function App() {
           <Route path="/createaccount" element={<CreateAccountForm />} />
           <Route path="/transaction" element={<TransactionComponent />} />
           <Route path='/update' element={<UpdateCostumer/>}/>
-          
-
           <Route path="/wallet/" element={<Wallet />}/>
           <Route path="getbalance" element={<GetBalance />} />
           <Route path="createwallet" element={<CreateWallet />} />
