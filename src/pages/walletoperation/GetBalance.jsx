@@ -8,7 +8,7 @@ function GetBalance() {
 
     const handleGetBalance = async () => {
         try {
-            const response = await fetch(`/wallet/balance?mobile=${mobile}`);
+            const response = await fetch(`http://localhost:8080/wallet/balance?mobile=${mobile}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch balance');
             }

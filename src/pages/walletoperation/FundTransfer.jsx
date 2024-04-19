@@ -10,7 +10,7 @@ function FundTransfer() {
 
     const handleFundTransfer = async () => {
         try {
-            const response = await fetch('/wallet/fundTransfer', {
+            const response = await fetch('http://localhost:8080/wallet/fundTransfer', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function FundTransfer() {
 
     const fetchWalletDetails = async (mobile) => {
         try {
-            const response = await fetch(`/wallet/getWalletDetails?mobile=${mobile}`);
+            const response = await fetch(`http://localhost:8080/wallet/balance?mobile=${mobile}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch wallet details');
             }

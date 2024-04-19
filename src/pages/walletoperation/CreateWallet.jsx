@@ -14,7 +14,7 @@ function CreateWallet() {
 
     const fetchWallets = async () => {
         try {
-            const response = await fetch('/wallet/getAllWallets');
+            const response = await fetch('http://localhost:8080/wallet/balance');
             if (!response.ok) {
                 throw new Error('Failed to fetch wallets');
             }
@@ -27,7 +27,7 @@ function CreateWallet() {
 
     const handleCreateWallet = async () => {
         try {
-            const response = await fetch('/wallet/createWallet', {
+            const response = await fetch('http://localhost:8080/wallet/createWallet', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

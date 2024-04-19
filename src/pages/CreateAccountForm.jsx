@@ -16,13 +16,7 @@ function AccountManagement() {
     // Fetch accounts data from API
     const fetchAccounts = async () => {
       try {
-        const response = await fetch(`/api/account/viewAccounts`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ walletId, key }),
-        });
+        const response = await fetch(`http://localhost:8080/account/viewAccounts?walletId=${walletId}&key=${key}`);
 
         if (response.ok) {
           const data = await response.json();
@@ -46,11 +40,12 @@ function AccountManagement() {
     }));
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Make a POST request to create a new account
-    fetch('/api/accounts', {
+    fetch('http://localhost:8080/account/addAccount', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -80,7 +75,7 @@ function AccountManagement() {
 
   const handleDelete = (accountId) => {
     // Make a DELETE request to remove an account
-    fetch('/api/account/removeAccount', {
+    fetch('http://localhost:8080/account/removeAccount', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

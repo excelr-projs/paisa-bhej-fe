@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+
+#login{
+  padding: 60px;
+  background: #EFE0E2;
+  border: 1px;
+  border-radius: 10px;
+}
+
+
+#loginbtn{
+  background: #E37F7C;
+  width: 100%;
+}
+#loginrs{
+  padding-top: 20px;
+  padding-left: 40px;
+  display: flex;
+   gap: 10px;
+}
+#loginrss{
+  color: #E37F7C;
+}

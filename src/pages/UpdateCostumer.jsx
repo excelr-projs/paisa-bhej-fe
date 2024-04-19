@@ -21,7 +21,7 @@ function UpdateCostumer() {
     
     // Assuming you have an API endpoint to update customer details
     try {
-      const response = await fetch('/api/updateCustomer', {
+      const response = await fetch('http://localhost:8080/customer/updateCustomer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ function HandelDeposit() {
 
     const handleDeposit = async () => {
         try {
-            const response = await fetch('/wallet/deposit', {
+            const response = await fetch('http://localhost:8080/wallet/deposit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ function HandelDeposit() {
 
     const fetchDepositDetails = async (depositId) => {
         try {
-            const response = await fetch(`/wallet/depositDetails?id=${depositId}`);
+            const response = await fetch(`http://localhost:8080/wallet/depositDetails?id=${depositId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch deposit details');
             }
