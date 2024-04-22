@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import './wallet.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
+
 
 function HandelDeposit() {
     const [mobile, setMobile] = useState('');
@@ -47,13 +51,16 @@ function HandelDeposit() {
 
     return (
         <div className='container'>
+            <div id="getbalances">
             <div className='row form-group'>
-                <h3>Deposit</h3>
+            <div id="wicon"><FontAwesomeIcon icon={faAnglesUp}/>
+                <h3 id="wb"> Deposit Money</h3></div>
+                
                 <div className="col-md-6">
                     <input
                         type="text"
-                        className="form-control"
-                        placeholder="Mobile"
+                        className="horizontal-lines"
+                        placeholder="EMAIL ADRESS"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                     />
@@ -61,13 +68,13 @@ function HandelDeposit() {
                 <div className="col-md-6">
                     <input
                         type="number"
-                        className="form-control"
+                        className="horizontal-lines"
                         placeholder="Amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
                 </div>
-                <button onClick={handleDeposit} className="btn btn-primary mt-4 col-md-6 mx-auto">Deposit</button>
+                <button onClick={handleDeposit} className="DEP">Deposit</button>
                 {message && <p>{message}</p>}
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {depositDetails && (
@@ -79,6 +86,7 @@ function HandelDeposit() {
                     </div>
                 )}
             </div>
+        </div>
         </div>
     );
 }

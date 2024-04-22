@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 
 function FundTransfer() {
     const [mobile, setMobile] = useState('');
@@ -48,13 +50,15 @@ function FundTransfer() {
 
     return (
         <div className='container'>
+            <div id="getbalances">
             <div className='row form-group'>
-                <h3>Fund Transfer</h3>
+            <div id="wicon"><FontAwesomeIcon icon={faMoneyBillTransfer}/>
+                <h3 id="wb"> Send Money</h3></div>
                 <div className="col-md-6">
                     <input
                         type="text"
-                        className="form-control"
-                        placeholder="Source Mobile"
+                        className="horizontal-lines"
+                        placeholder="SOURCE EMAIL"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                     />
@@ -62,8 +66,8 @@ function FundTransfer() {
                 <div className="col-md-6">
                     <input
                         type="text"
-                        className="form-control"
-                        placeholder="Target Mobile"
+                        className="horizontal-lines"
+                        placeholder="TARGET EMAIL"
                         value={targetMobile}
                         onChange={(e) => setTargetMobile(e.target.value)}
                     />
@@ -71,13 +75,13 @@ function FundTransfer() {
                 <div className="col-md-6">
                     <input
                         type="number"
-                        className="form-control"
+                        className="horizontal-lines"
                         placeholder="Amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
                 </div>
-                <button onClick={handleFundTransfer} className="btn btn-primary mt-4 col-md-6">Fund Transfer</button>
+                <button onClick={handleFundTransfer} className="getbal"> Transfer</button>
                 <p>{message}</p>
                 <p style={{ color: 'red' }}>{error}</p>
                 {walletDetails && (
@@ -88,6 +92,7 @@ function FundTransfer() {
                     </div>
                 )}
             </div>
+        </div>
         </div>
     );
 }
