@@ -20,11 +20,16 @@ function Login() {
                     password: password,
                 })
             });
-            const data = await response.json();
-            if (data.message === "Login Success") {
+            const data = await response.text();
+            const uuidRegex = /uuid=([^,]*)/;
+            const match = data.match(uuidRegex);
+            if (match) {
+                const uuid = match[1];
+                localStorage.setItem('uuid', uuid);
+                localStorage.setItem('mobileNumber', mobileNumber);
                 navigate('/home');
             } else {
-                alert(data.message);
+                alert("Login failed. Please try again.");
             }
         } catch (err) {
             console.error(err);
