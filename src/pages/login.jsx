@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate ,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './login.css';
 
 function Login() {
@@ -16,7 +16,7 @@ function Login() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    email: mobileNumber, // Assuming the mobile number is used as email in your backend
+                    mobileNumber: mobileNumber,
                     password: password,
                 })
             });
@@ -35,18 +35,10 @@ function Login() {
     return (
         <div>
             <div >
-                
                 <div className="loginborder">
-
-
-                     
-
-
                     <h2>Sign In</h2>
-                    
                     <form onSubmit={handleLogin}>
                         <div className="form-group">
-                            
                             <input
                                 type="text"
                                 className="horizontal-lines"
@@ -55,9 +47,7 @@ function Login() {
                                 onChange={(event) => setMobileNumber(event.target.value)}
                             />
                         </div>
-
                         <div className="form-group">
-                           
                             <input
                                 type="password"
                                 className="horizontal-lines"
@@ -66,27 +56,15 @@ function Login() {
                                 onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
-                        
-
-
-                        
-
                         <div id="loginicon">
-                        <button type="submit" classname="btn">Sign In</button>
+                            <button type="submit" classname="btn">Sign In</button>
                         </div>
                     </form>
-
                 </div>
                 <div id="dou" >
-                    Do you have an account? 
-
-                    
-                    <Link to ="/Register"  id="registernow">  Register</Link>
-                    
-                        
-                       
-                        </div>
-                
+                    Do you have an account?
+                    <Link to="/Register" id="registernow">Register</Link>
+                </div>
             </div>
         </div>
     );

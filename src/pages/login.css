@@ -1,121 +1,83 @@
-.horizontal-lines{
-    border: none;
-    border-bottom: 1px solid #000; /* You can change the color as needed */
-    background: none;
-    padding: 5px 0; /* Adjust padding as needed */
-    width: 450px; /* Set width as needed */
-    box-sizing: border-box;
-    outline: none; /* Remove default focus outline */
+.horizontal-lines {
+  border: none;
+  border-bottom: 1px solid #000;
+  /* You can change the color as needed */
+  background: none;
+  padding: 5px 0;
+  /* Adjust padding as needed */
+  width: 450px;
+  /* Set width as needed */
+  box-sizing: border-box;
+  outline: none;
+  /* Remove default focus outline */
+}
 
-    
+/* Optional: Add hover and focus effects */
+.horizontal-lines:focus,
+.horizontal-lines:hover {
+  border-color: #007bff;
+  /* Change color on hover/focus */
+}
 
-  }
-  
-  /* Optional: Add hover and focus effects */
-  .horizontal-lines:focus,
-  .horizontal-lines:hover {
-    border-color: #007bff; /* Change color on hover/focus */
-  }
-
-
-
-input
-{
+input {
   margin-bottom: 30px;
-  font-family:Arial, Helvetica, sans-serif;
-  color:rgb(75, 68, 95);
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(75, 68, 95);
   padding-left: 20px;
 }
 
-
-
-
-
-
-
-  h2
-  {
-  padding  : 10px;
-  font-family:Arial, Helvetica, sans-serif;
-  color:rgb(75, 68, 95);
+h2 {
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(75, 68, 95);
   margin-top: 15px;
   margin-bottom: 10px;
-  }
-  
-
-  .loginborder
-  {
-
-
-border-top-left-radius: 15px;
-border-top-right-radius: 15px;
-border-bottom-left-radius: 13px;
-    border-bottom-right-radius: 13px;
-
-height:250px;
-
-width:600px;
-
-
-border:solid 1px white;
-
-font-size: large;
-
-margin: 15px;
-
-background-color: #EFE0E2;
-
-
-  }
-
-  #registernow
-  {
-    color:#E37F7C;
-  }
-
-
-   .buttoneddisplay
-  {
-
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
-  
-  
-button
-{
+
+.loginborder {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  height: 250px;
+  width: 600px;
+  border: solid 1px white;
+  font-size: large;
+  margin: 15px;
+  background-color: #EFE0E2;
+}
+
+#registernow {
+  color: #E37F7C;
+}
+
+.buttoneddisplay {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button {
   margin-top: 5px;
   margin-bottom: 5px;
-    color: white;
-    background-color: #E37F7C;
-    padding:0px;
-font-size:x-large;
-    border:none;
-    font-family:Arial, Helvetica, sans-serif;
-   
+  color: white;
+  background-color: #E37F7C;
+  padding: 0px;
+  font-size: x-large;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+
 }
 
+#loginicon {
+  background-color: #E37F7C;
+  margin-top: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 
+}
 
-
-
- 
-  #loginicon
-
-  {
-    background-color: #E37F7C;
-    margin-top:10px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-   
-  }
-
-
-
-
-  #dou
-  {
-   padding-top: 25px;
-  }
+#dou {
+  padding-top: 25px;
+}
