@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import WalletIcon from '@mui/icons-material/Wallet';
 
 function Home() {
   const uuid = localStorage.getItem('uuid');
@@ -21,9 +22,27 @@ function Home() {
   }, []);
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>UUID: {uuid}</p>
-      <p>Wallet Balance: {walletBalance}</p>
+      <div>
+        <tr>
+          <td valign='middle'>
+            <WalletIcon style={{
+              width: '150px',
+              height: '150px'
+            }} />
+          </td>
+          <td valign='middle'>
+            <span style={{
+              fontSize: '25px'
+            }}>Wallet Balance</span><br />
+            <span style={{
+              fontSize: '50px'
+            }}>{walletBalance} Rs</span>
+          </td>
+        </tr>
+        <button>Add Account</button>
+        <button>Deposit Money</button>
+        <button>Send Money</button>
+      </div>
     </div>
   )
 }
