@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import './wallet.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWallet } from '@fortawesome/free-solid-svg-icons';
+import Wallet from '../Wallet';
 
 function GetBalance() {
     const [mobile, setMobile] = useState('');
@@ -26,22 +30,28 @@ function GetBalance() {
 
     return (
         <div className='container'>
+            <div id="balset">
+            <div id="getbalances">
+                <div id="wicon"><FontAwesomeIcon icon={faWallet}/>
+                <h3 id="wb"> Wallet Balance</h3></div>
             <div className='row form-group'>
-                <h3>Get Balance</h3>
+                
                 <div className="col-md-6">
                     <input
                         type="text"
-                        className="form-control"
-                        placeholder="Mobile"
+                        className="horizontal-lines"
+                        placeholder="EMAIL ADRESS"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                     />
                 </div>
-                <button onClick={handleGetBalance} className="btn btn-primary mt-4 col-md-6">Get Balance</button>
+                <button onClick={handleGetBalance} className="getbal">Get Balance</button>
                 {message && <p>{message}</p>}
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {balance !== 0 && <p>Balance: {balance}</p>}
             </div>
+        </div>
+        </div>
         </div>
     );
 }

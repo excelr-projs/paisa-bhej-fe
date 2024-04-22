@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function CreateWallet() {
     const [mobile, setMobile] = useState('');
@@ -52,13 +54,18 @@ function CreateWallet() {
 
     return (
         <div className='container'>
+            {/* <div><FontAwesomeIcon icon={faEnvelope} /></div> */}
+           
+            <div id="getbalancer">
+            
             <h3>Create Wallet</h3>
             <div className='row form-group'>
+            
                 <div className="col-md-6">
                     <input
                         type="text"
-                        className="form-control"
-                        placeholder="Mobile"
+                        className="horizontal-lines"
+                        placeholder="EMAIL ADRESS"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                     />
@@ -66,13 +73,13 @@ function CreateWallet() {
                 <div className="col-md-6">
                     <input
                         type="number"
-                        className="form-control"
+                        className="horizontal-lines"
                         placeholder="Initial Balance"
                         value={balance}
                         onChange={(e) => setBalance(e.target.value)}
                     />
                 </div>
-                <button onClick={handleCreateWallet} className="btn btn-primary mt-4 col-md-6 mx-auto">Create Wallet</button>
+                <button onClick={handleCreateWallet} className="DEP">Create Wallet</button>
             </div>
             {message && <p className="text-success">{message}</p>}
             {error && <p className="text-danger">{error}</p>}
@@ -86,6 +93,7 @@ function CreateWallet() {
                     </ul>
                 </div>
             )}
+        </div>
         </div>
     );
 }
