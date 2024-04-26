@@ -50,7 +50,7 @@ function Login() {
     }
 
     return (
-        <div>
+        <div className="login">
             <div >
                 <div className="loginborder">
                     <h2>Sign In</h2>

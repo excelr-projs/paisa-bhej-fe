@@ -1,73 +1,90 @@
-
-.cards
-{
-  margin:0px;
-  border: solid 1px white;
-background-color: #EFE0E2;
-  border-top-left-radius: 15px;
-border-top-right-radius: 15px;
-border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
+.register .horizontal-lines {
+  border: none;
+  border-bottom: 1px solid #000;
+  /* You can change the color as needed */
+  background: none;
+  padding: 5px 0;
+  /* Adjust padding as needed */
+  width: 450px;
+  /* Set width as needed */
+  box-sizing: border-box;
+  outline: none;
+  /* Remove default focus outline */
+}
 
+/* Optional: Add hover and focus effects */
+.register .horizontal-lines:focus,
+.register .horizontal-lines:hover {
+  border-color: #007bff;
+  /* Change color on hover/focus */
+}
 
+.register input {
+  margin-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(75, 68, 95);
+  padding-left: 20px;
+}
 
-.horizontal-line{
-    border: none;
-    border-bottom: 1px solid #000; /* You can change the color as needed */
-    background: none;
-    padding: 5px 0; /* Adjust padding as needed */
-    width: 500px; /* Set width as needed */
-    box-sizing: border-box;
-    outline: none; /* Remove default focus outline */
-  }
-  
-  /* Optional: Add hover and focus effects */
-  .horizontal-line:focus,
-  .horizontal-line:hover {
-    border-color: #007bff; /* Change color on hover/focus */
-  }
-  
+.register h2 {
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(75, 68, 95);
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
 
-  h1
-  {
-    margin-top: 15px;
-    margin-bottom: 25px;
-    color:rgb(75, 68, 95);
-  }
+.register .registerborder {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  height: 250px;
+  width: 600px;
+  border: solid 1px white;
+  font-size: large;
+  margin: 15px;
+  background-color: #EFE0E2;
+}
 
+.register #registernow {
+  color: #E37F7C;
+}
 
-  .register-border
-  {
-    height:700px ;
-    
-    width:600px;
-    /* background-color: aqua; */
-  }
+.register .buttoneddisplay {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  input
-  {
-    font-family:Arial, Helvetica, sans-serif;
-    
-  }
+.register button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  background-color: #E37F7C;
+  padding: 0px;
+  font-size: x-large;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
 
-  #regicon
-  {
-    width:598px;
-    background-color: #E37F7C;
-    margin-top:10px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }
+}
 
-  #registernows
-  {
-   
-    color:#E37F7C;
-  }
+.register #loginicon {
+  background-color: #E37F7C;
+  margin-top: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 
-  #todown
-  {
-    margin-top: 10px;
-  }
+}
+
+.register #dou {
+  padding-top: 25px;
+}

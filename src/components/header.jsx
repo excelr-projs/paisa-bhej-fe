@@ -14,7 +14,7 @@ function Header() {
               <li className="nav-item">
                 <button
                   className={`nav-link`}
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate('/home')}
                 >
                   Home
                 </button>
@@ -33,10 +33,9 @@ function Header() {
                 style={{ marginRight: '10px' }}
                 onClick={() => {
                   if (window.confirm('Are you sure you want to log out?')) {
-                    localStorage.removeItem('token');
-                    setIsLoggedIn(false);
-                    setIsAdmin(false);
-                    navigate('/login');
+                    localStorage.removeItem('uuid');
+                    localStorage.removeItem('mobileNumber');
+                    navigate('/');
                   }
                 }}
               >

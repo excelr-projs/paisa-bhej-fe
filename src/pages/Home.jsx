@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import WalletIcon from '@mui/icons-material/Wallet';
 import '../colors.css';
+import Header from '../components/Header';
 
 function Home() {
   const uuid = localStorage.getItem('uuid');
@@ -23,6 +24,7 @@ function Home() {
   }, []);
   return (
     <div>
+      <Header />
       <div style={{
         backgroundColor: 'var(--tertiary)',
         width: '100%',
@@ -59,19 +61,22 @@ function Home() {
           </table>
         </div>
         <div>
-          <button style={{
-            padding: '10px 22px',
+          <button className='secondary-btn' style={{
+            padding: '15px 22px',
             width: '33%',
+            fontSize: '20px',
             borderBottomLeftRadius: '25px'
           }}>Add Account</button>
-          <button style={{
-            padding: '10px 22px',
+          <button className='primary-btn' style={{
+            padding: '15px 22px',
             width: '34%',
+            fontSize: '20px',
             backgroundColor: 'var(--primary)'
           }}>Deposit Money</button>
-          <button style={{
-            padding: '10px 22px',
+          <button className='secondary-btn' style={{
+            padding: '15px 22px',
             width: '33%',
+            fontSize: '20px',
             borderBottomRightRadius: '25px',
           }}>Send Money</button>
         </div>

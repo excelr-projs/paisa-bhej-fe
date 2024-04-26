@@ -62,3 +62,14 @@
 #loginrss{
   color: #E37F7C;
 }
+
+.primary-btn {
+  background-color: var(--primary);
+  border: none;
+  color: white;
+}
+.secondary-btn {
+  background-color: var(--secondary);
+  border: none;
+  color: white;
+}
