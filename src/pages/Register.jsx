@@ -58,6 +58,16 @@ function Register() {
                         </div>
                         <div >
 
+<input
+    type="text"
+    className="horizontal-line"
+    placeholder="Enter Email"
+    value={mobileNumber}
+    onChange={(event) => setMobileNumber(event.target.value)}
+/>
+</div>
+                        <div >
+
                             <input
                                 type="password"
                                 className="horizontal-line"

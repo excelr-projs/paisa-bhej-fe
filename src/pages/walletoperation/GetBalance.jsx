@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './wallet.css';
+import './balance.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWallet } from '@fortawesome/free-solid-svg-icons';
 import Wallet from '../Wallet';
@@ -29,18 +29,21 @@ function GetBalance() {
     };
 
     return (
+        <div id="towidth">
         <div className='container'>
             <div id="balset">
             <div id="getbalances">
                 <div id="wicon"><FontAwesomeIcon icon={faWallet}/>
                 <h3 id="wb"> Wallet Balance</h3></div>
+
+                
             <div className='row form-group'>
                 
                 <div className="col-md-6">
                     <input
                         type="text"
                         className="horizontal-lines"
-                        placeholder="EMAIL ADRESS"
+                        placeholder="ENTER MOBILE NUMBER"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                     />
@@ -50,6 +53,7 @@ function GetBalance() {
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {balance !== 0 && <p>Balance: {balance}</p>}
             </div>
+        </div>
         </div>
         </div>
         </div>

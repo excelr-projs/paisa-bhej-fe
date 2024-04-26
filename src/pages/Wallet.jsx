@@ -17,7 +17,7 @@ function Wallet() {
 
      
      
-     <div id="cont"><GetBalance/>
+     <div ><GetBalance/>
      </div>
      <div id="cont1">
      <FundTransfer/>

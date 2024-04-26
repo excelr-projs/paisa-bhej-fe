@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './wallet.css';
+// import './wallet.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -60,7 +60,7 @@ function HandelDeposit() {
                     <input
                         type="text"
                         className="horizontal-lines"
-                        placeholder="EMAIL ADRESS"
+                        placeholder="ENTER MOBILE NUMBER"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                     />

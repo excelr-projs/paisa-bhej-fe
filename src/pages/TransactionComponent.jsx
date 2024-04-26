@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './transaction.css';
 
 function TransactionComponent() {
   const [walletId, setWalletId] = useState('');
@@ -60,23 +61,27 @@ function TransactionComponent() {
   };
 
   return (
-    <div className='container border rounded'>
+    <div className='transactionborder'>
       <h2>View Transactions</h2>
 
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
+            <div id="headingTs">
             <h3>By Wallet</h3>
+            </div>
             <input
               type="text"
-              className="form-control"
+              className="formcontrolT"
               placeholder="Wallet ID"
               value={walletId}
               onChange={(e) => setWalletId(e.target.value)}
             />
           </div>
           <div className="align-self-center">
-            <button type="button" onClick={handleViewByWallet} className="btn btn-primary mt-2">View Transactions</button>
+            <div id="Ticon">
+            <button type="button" onClick={handleViewByWallet} className="btns">View Transactions</button>
+            </div>
           </div>
         </div>
       </form>
@@ -84,24 +89,28 @@ function TransactionComponent() {
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
+          <div id="headingTs">
             <h3>By Date</h3>
-            <input
+            </div>
+            {/* <input
               type="date"
-              className="form-control"
+              className="formcontrolT"
               placeholder="From Date"
               value={fromDate}
               onChange={(e) => setFromDate(e.target.value)}
-            />
+            /> */}
             <input
               type="date"
-              className="form-control"
+              className="formcontrolT"
               placeholder="To Date"
               value={toDate}
               onChange={(e) => setToDate(e.target.value)}
             />
           </div>
           <div className="align-self-center">
-            <button type="button" onClick={handleViewByDate} className="btn btn-primary mt-2">View Transactions</button>
+          <div id="Ticon">
+            <button type="button" onClick={handleViewByDate} className="btns">View Transactions</button>
+            </div>
           </div>
         </div>
       </form>
@@ -109,24 +118,28 @@ function TransactionComponent() {
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
+          <div id="headingTs">
             <h3>All Transactions</h3>
+            </div>
             <input
               type="text"
-              className="form-control"
+              className="formcontrolT"
               placeholder="Transaction Type"
               value={transactionType}
               onChange={(e) => setTransactionType(e.target.value)}
             />
           </div>
           <div className=" align-self-center">
-            <button type="button" onClick={handleViewAll} className="btn btn-primary mt-2">View Transactions</button>
+          <div id="Ticon">
+            <button type="button" onClick={handleViewAll} className="btns">View Transactions</button>
+            </div>
           </div>
         </div>
       </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      <h3>Transactions</h3>
+    <div id="transactionoutput">
+      <h3></h3>
       <ul>
         {transactions.map(transaction => (
           <li key={transaction.id}>
@@ -134,6 +147,7 @@ function TransactionComponent() {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 }

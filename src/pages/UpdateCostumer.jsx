@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import './update.css';
 
 function UpdateCostumer() {
 
@@ -42,15 +43,18 @@ function UpdateCostumer() {
   };
 
   return (
-    <div className="container border rounded p-4">
+    <div className="updateborder">
     <div className="row">
+      <div id="headerU">
     <h2>Update Customer</h2>
+    </div>
     <form onSubmit={handleSubmit}>
       <label className="form-group">
-        Name:
+        
         <input
           type="text"
-          className="form-control"
+          className="formcontrolU"
+          placeholder="Enter Name"
           name="name"
           value={customer.name}
           onChange={handleChange}
@@ -58,10 +62,11 @@ function UpdateCostumer() {
       </label>
       <br />
       <label className="form-group">
-        Mobile Number:
+        
         <input
           type="text"
-          className="form-control"
+          className="formcontrolU"
+          placeholder="Enter Mobile Nmber"
           name="mobileNumber"
           value={customer.mobileNumber}
           onChange={handleChange}
@@ -69,17 +74,20 @@ function UpdateCostumer() {
       </label>
       <br />
       <label className="form-group">
-        Password:
+       
         <input
           type="password"
-          className="form-control"
+          className="formcontrolU"
+          placeholder="Enter Password "
           name="password"
           value={customer.password}
           onChange={handleChange}
         />
       </label>
       <br />
-      <button type="submit" className="btn btn-primary mt-4">Update</button>
+      <div id="updateicon">
+      <button type="submit" className="btns">Update</button>
+      </div>
     </form>
     </div>
   </div>
