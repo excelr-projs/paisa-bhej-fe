@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './createaccount.css';
 
 function AccountManagement() {
   const [accountInfo, setAccountInfo] = useState({
@@ -98,62 +99,72 @@ function AccountManagement() {
 
   return (
     <div>
-      <div className='container border rounded'>
-        <h2>Create Account</h2>
+      <div className='AccountBorder'>
+        <div id="headerC">
+        <h2 >Create Account</h2>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Account Number</label>
+            
             <input 
               type="text" 
-              className="form-control"
+              className="formcontrolC"
+              placeholder="Enter Account number"
               name="accountNumber" 
               value={accountInfo.accountNumber} 
               onChange={handleInputChange} />
           </div>
           <div className="form-group">
-            <label>IFSC Code:</label>
+            
             <input 
               type="text" 
-              className="form-control"
+              className="formcontrolC"
+              placeholder="Enter IFSC code"
               name="ifscCode" 
               value={accountInfo.ifscCode} 
               onChange={handleInputChange} />
           </div>
           <div className="form-group">
-            <label>Bank Name</label>
+           
             <input 
               type="text"
-              className="form-control" 
+              className="formcontrolC" 
+              placeholder="Enter Bank Name"
               name="bankName" 
               value={accountInfo.bankName} 
               onChange={handleInputChange} />
           </div>
+          {/* <label className="balancelabel"> <h2>Balance</h2></label>
           <div className="form-group">
-            <label>Balance:</label>
+            
             <input 
               type="number" 
-              className="form-control"
+              className="formcontrolC"
+              placeholder="Enter Mobile Number"
               name="balance" 
+              
               value={accountInfo.balance} 
               onChange={handleInputChange} />
+          </div> */}
+          <div id="Createaccounticon">
+          <button type="submit" className="btns">Create Account</button>
           </div>
-          <button type="submit" className="btn btn-primary m-4">Create Account</button>
         </form>
       </div>
-
+{/* 
       <div className='container border rounded'>
-        <h2>View Accounts</h2>
+        <h2></h2>
         <ul>
           {accounts.map(account => (
             <li key={account.id}>
               Account Number: {account.accountNumber},
                Bank Name: {account.bankName},
                 IFSC Code: {account.ifscCode}
-              <button  onClick={() => handleDelete(account.id) }>Delete</button>
+              <button  onClick={() => handleDelete(account.id) }>viewAccounts</button>
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }

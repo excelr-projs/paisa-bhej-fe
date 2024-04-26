@@ -1,0 +1,47 @@
+.formcontrolU
+{
+    border: none;
+    border-bottom: 1px solid #000;
+    /* You can change the color as needed */
+    background: none;
+    padding: 5px 0;
+    /* Adjust padding as needed */
+    width: 450px;
+    /* Set width as needed */
+    box-sizing: border-box;
+    outline: none;
+}
+
+.formcontrolU:focus,
+.formcontrolU:hover {
+  border-color: #007bff;
+}
+
+.updateborder
+{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  height: 340px;
+  width: 601px;
+  border: solid 1px white;
+  font-size: large;
+  margin: 15px;
+  background-color: #EFE0E2;
+}
+
+#updateicon
+{
+  background-color: #E37F7C;
+  margin-top: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 599px;
+}
+
+#headerU
+{
+  padding-bottom: 15px;
+}
+

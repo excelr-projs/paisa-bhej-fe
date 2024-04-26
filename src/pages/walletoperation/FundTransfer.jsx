@@ -58,7 +58,7 @@ function FundTransfer() {
                     <input
                         type="text"
                         className="horizontal-lines"
-                        placeholder="SOURCE EMAIL"
+                        placeholder="FROM  [MOBILE NUMBER]"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                     />
@@ -67,11 +67,12 @@ function FundTransfer() {
                     <input
                         type="text"
                         className="horizontal-lines"
-                        placeholder="TARGET EMAIL"
+                        placeholder="TO  [MOBILE NUMBER]"
                         value={targetMobile}
                         onChange={(e) => setTargetMobile(e.target.value)}
                     />
                 </div>
+                
                 <div className="col-md-6">
                     <input
                         type="number"
