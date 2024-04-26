@@ -88,7 +88,7 @@ function Register() {
                 </div>
                 <div id="todown">
                     Have an account?
-                    <Link to="/login" id="registernows"> SignIn</Link>
+                    <Link to="/" id="registernows"> SignIn</Link>
 
                 </div>
 

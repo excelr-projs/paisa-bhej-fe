@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from 'react-router-dom';
 import './login.css';
 
@@ -6,6 +6,18 @@ function Login() {
     const [mobileNumber, setMobileNumber] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        checkLogin();
+    }, []);
+
+    async function checkLogin() {
+        const uuid = localStorage.getItem('uuid');
+        const mobileNumber = localStorage.getItem('mobileNumber');
+        if (uuid && mobileNumber) {
+            navigate('/home');
+        }
+    }
 
     async function handleLogin(event) {
         event.preventDefault();
