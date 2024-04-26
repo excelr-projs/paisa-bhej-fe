@@ -7,16 +7,17 @@ function Header() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ position: "fixed", width: "100%", zIndex: 3, top: 0, left: 0, margin: 0 }}>
+      <nav className="navbar navbar-expand-lg" style={{ position: "fixed", width: "100%", zIndex: 3, top: 0, left: 0, margin: 0, backgroundColor: 'var(--primary)' }}>
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <button
                   className={`nav-link`}
+                  style={{color: 'white', fontWeight: 'bold'}}
                   onClick={() => navigate('/home')}
                 >
-                  Home
+                  Dashboard
                 </button>
               </li>
             </ul>

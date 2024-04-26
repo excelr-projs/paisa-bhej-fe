@@ -45,15 +45,19 @@ function Home() {
                 <td valign='middle'>
                   <WalletIcon style={{
                     width: '200px',
-                    height: '150px'
+                    height: '150px',
+                    color: 'var(--primary)'
                   }} />
                 </td>
                 <td valign='middle'>
                   <span style={{
-                    fontSize: '25px'
+                    fontSize: '25px',
+                    color: 'var(--primary)'
                   }}>Wallet Balance</span><br />
                   <span style={{
-                    fontSize: '50px'
+                    fontSize: '60px',
+                    color: 'var(--primary)',
+                    fontWeight: 'bold'
                   }}>{walletBalance} Rs</span>
                 </td>
               </tr>
@@ -66,19 +70,31 @@ function Home() {
             width: '33%',
             fontSize: '20px',
             borderBottomLeftRadius: '25px'
-          }}>Add Account</button>
+          }} onClick={
+            () => {
+              window.location.href = '/createaccount';
+            }
+          }>Add Account</button>
           <button className='primary-btn' style={{
             padding: '15px 22px',
             width: '34%',
             fontSize: '20px',
             backgroundColor: 'var(--primary)'
-          }}>Deposit Money</button>
+          }} onClick={
+            () => {
+              window.location.href = '/fundtransfer';
+            }
+          }>Deposit Money</button>
           <button className='secondary-btn' style={{
             padding: '15px 22px',
             width: '33%',
             fontSize: '20px',
             borderBottomRightRadius: '25px',
-          }}>Send Money</button>
+          }} onClick={
+            () => {
+              window.location.href = '/fundtransfer';
+            }
+          }>Send Money</button>
         </div>
       </div>
     </div>

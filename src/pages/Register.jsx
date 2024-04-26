@@ -21,6 +21,7 @@ function Register() {
                 body: JSON.stringify({
                     name: employeename,
                     mobileNumber: mobileNumber,
+                    email: email,
                     password: password
                 })
             });
@@ -45,7 +46,7 @@ function Register() {
                                 type="text"
                                 className="horizontal-lines"
                                 placeholder="Enter Name"
-                                value={mobileNumber}
+                                value={employeename}
                                 onChange={(event) => setEmployeename(event.target.value)}
                             />
                         </div>
@@ -63,7 +64,7 @@ function Register() {
                                 type="text"
                                 className="horizontal-lines"
                                 placeholder="Enter Email"
-                                value={mobileNumber}
+                                value={email}
                                 onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
