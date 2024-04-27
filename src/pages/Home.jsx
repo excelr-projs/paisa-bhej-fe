@@ -6,21 +6,35 @@ import Header from '../components/Header';
 function Home() {
   const uuid = localStorage.getItem('uuid');
   const mobileNumber = localStorage.getItem('mobileNumber');
-  const [walletBalance, setWalletBalance] = useState(0);
-  const getBalance = async () => {
+  const [wallet, setWallet] = useState({});
+  const [accounts, setAccounts] = useState([]);
+  const getWallet = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/wallet/balance?mobile=${mobileNumber}&uuid=${uuid}`, {
+      const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobileNumber}&uuid=${uuid}`, {
         method: 'GET'
       });
       const data = await response.json();
-      setWalletBalance(data);
+      setWallet(data);
+      getAccounts(data.walletId);
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred. Please try again.");
+    }
+  }
+  const getAccounts = async (walletId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/account/viewAccounts?walletId=${walletId}&key=${uuid}`, {
+        method: 'GET'
+      });
+      const data = await response.json();
+      setAccounts(data);
     } catch (err) {
       console.error(err);
       alert("An error occurred. Please try again.");
     }
   }
   useEffect(() => {
-    getBalance();
+    getWallet();
   }, []);
   return (
     <div>
@@ -58,7 +72,7 @@ function Home() {
                     fontSize: '60px',
                     color: 'var(--primary)',
                     fontWeight: 'bold'
-                  }}>{walletBalance} Rs</span>
+                  }}>₹ {wallet.balance}</span>
                 </td>
               </tr>
             </tbody>

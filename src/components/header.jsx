@@ -1,5 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import logo from '../assets/logo_text.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Header() {
@@ -8,6 +8,11 @@ function Header() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg" style={{ position: "fixed", width: "100%", zIndex: 3, top: 0, left: 0, margin: 0, backgroundColor: 'var(--primary)' }}>
+      <a class="navbar-brand" href="/home">
+        <img src={logo} height='30' style={{
+          marginLeft: '20px',
+        }} alt=""/>
+      </a>
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -18,6 +23,15 @@ function Header() {
                   onClick={() => navigate('/home')}
                 >
                   Dashboard
+                </button>
+              </li>
+              <li className="nav-item">
+                <button
+                  className={`nav-link`}
+                  style={{color: 'white'}}
+                  onClick={() => navigate('/accounts')}
+                >
+                  Accounts
                 </button>
               </li>
             </ul>

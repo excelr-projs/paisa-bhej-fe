@@ -9,6 +9,7 @@ import Wallet from './pages/Wallet';
 import FundTransfer from './pages/walletoperation/FundTransfer';
 import HandelDeposit from './pages/walletoperation/HandelDeposit';
 import UpdateCostumer from './pages/UpdateCostumer';
+import Accounts from './pages/Accounts';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/Register" element={<Register />} />
             <Route path="/" element={<Login />} />
             <Route path="/createaccount" element={<CreateAccountForm />} />
+            <Route path="/accounts" element={<Accounts />} />
             <Route path="/transaction" element={<TransactionComponent />} />
             <Route path='/update' element={<UpdateCostumer/>}/>
             <Route path="/wallet" element={<Wallet />}/>
