@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './transaction.css';
 
 function TransactionComponent() {
   const [walletId, setWalletId] = useState('');
@@ -11,12 +10,11 @@ function TransactionComponent() {
 
   const handleViewByWallet = async () => {
     try {
-      const response = await fetch(`/transaction/transactions/${walletId}`);
+      const response = await fetch(`/trans/get?wallet_id=${walletId}`);
       if (!response.ok) {
         throw new Error('Failed to fetch transactions by wallet');
       }
       const data = await response.json();
-      console.log('Transactions by wallet:', data);
       setTransactions(data);
       setError('');
     } catch (error) {
@@ -28,12 +26,11 @@ function TransactionComponent() {
 
   const handleViewByDate = async () => {
     try {
-      const response = await fetch(`/transaction/transactions?from=${fromDate}&to=${toDate}`);
+      const response = await fetch(`/trans/get/${fromDate}/${toDate}`);
       if (!response.ok) {
         throw new Error('Failed to fetch transactions by date');
       }
       const data = await response.json();
-      console.log('Transactions by date:', data);
       setTransactions(data);
       setError('');
     } catch (error) {
@@ -43,45 +40,40 @@ function TransactionComponent() {
     }
   };
 
-  const handleViewAll = async () => {
+  const handleViewByType = async () => {
     try {
-      const response = await fetch(`/transaction/transactions${transactionType ? `/${transactionType}` : ''}`);
+      const response = await fetch(`/trans/get/${transactionType}`);
       if (!response.ok) {
-        throw new Error('Failed to fetch all transactions');
+        throw new Error('Failed to fetch transactions by type');
       }
       const data = await response.json();
-      console.log('All transactions:', data);
       setTransactions(data);
       setError('');
     } catch (error) {
-      console.error('Error viewing all transactions:', error);
+      console.error('Error viewing transactions by type:', error);
       setTransactions([]);
-      setError('Error viewing all transactions. Please try again.');
+      setError('Error viewing transactions by type. Please try again.');
     }
   };
 
   return (
-    <div className='transactionborder'>
+    <div className='container border rounded'>
       <h2>View Transactions</h2>
 
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
-            <div id="headingTs">
             <h3>By Wallet</h3>
-            </div>
             <input
               type="text"
-              className="formcontrolT"
+              className="form-control"
               placeholder="Wallet ID"
               value={walletId}
               onChange={(e) => setWalletId(e.target.value)}
             />
           </div>
           <div className="align-self-center">
-            <div id="Ticon">
-            <button type="button" onClick={handleViewByWallet} className="btns">View Transactions</button>
-            </div>
+            <button type="button" onClick={handleViewByWallet} className="btn btn-primary mt-2">View Transactions</button>
           </div>
         </div>
       </form>
@@ -89,28 +81,24 @@ function TransactionComponent() {
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
-          <div id="headingTs">
             <h3>By Date</h3>
-            </div>
-            {/* <input
+            <input
               type="date"
-              className="formcontrolT"
+              className="form-control"
               placeholder="From Date"
               value={fromDate}
               onChange={(e) => setFromDate(e.target.value)}
-            /> */}
+            />
             <input
               type="date"
-              className="formcontrolT"
+              className="form-control"
               placeholder="To Date"
               value={toDate}
               onChange={(e) => setToDate(e.target.value)}
             />
           </div>
           <div className="align-self-center">
-          <div id="Ticon">
-            <button type="button" onClick={handleViewByDate} className="btns">View Transactions</button>
-            </div>
+            <button type="button" onClick={handleViewByDate} className="btn btn-primary mt-2">View Transactions</button>
           </div>
         </div>
       </form>
@@ -118,28 +106,24 @@ function TransactionComponent() {
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group row">
           <div className="col-md-12">
-          <div id="headingTs">
-            <h3>All Transactions</h3>
-            </div>
+            <h3>By Type</h3>
             <input
               type="text"
-              className="formcontrolT"
+              className="form-control"
               placeholder="Transaction Type"
               value={transactionType}
               onChange={(e) => setTransactionType(e.target.value)}
             />
           </div>
-          <div className=" align-self-center">
-          <div id="Ticon">
-            <button type="button" onClick={handleViewAll} className="btns">View Transactions</button>
-            </div>
+          <div className="align-self-center">
+            <button type="button" onClick={handleViewByType} className="btn btn-primary mt-2">View Transactions</button>
           </div>
         </div>
       </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
-    <div id="transactionoutput">
-      <h3></h3>
+
+      <h3>Transactions</h3>
       <ul>
         {transactions.map(transaction => (
           <li key={transaction.id}>
@@ -147,7 +131,6 @@ function TransactionComponent() {
           </li>
         ))}
       </ul>
-      </div>
     </div>
   );
 }
