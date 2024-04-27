@@ -6,23 +6,11 @@ function AccountManagement() {
   const key = localStorage.getItem('uuid');
   console.log(key);
   const mobileNumber = localStorage.getItem('mobileNumber');
-  const [walletId, setWalletId] = useState('');
-  const [accountInfo, setAccountInfo] = useState({
-    key: key,
-    walletId: walletId,
-    accountNumber: '',
-    ifscCode: '',
-    bankName: '',
-  });
+  const [walletId, setWalletId] = useState(0);
+  const [ifscCode, setIfscCode] = useState('');
+  const [bankName, setBankName] = useState('');
+  const [accountNumber, setAccountNumber] = useState('');
   const navigate = useNavigate();
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setAccountInfo(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
 
   const getWalletId = async () => {
     try {
@@ -30,6 +18,7 @@ function AccountManagement() {
         method: 'GET'
       });
       const data = await response.json();
+      console.log(data.walletId);
       setWalletId(data.walletId);
     } catch (err) {
       console.error(err);
@@ -39,20 +28,26 @@ function AccountManagement() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const accountInfo = {
+      key: key,
+      walletId: walletId,
+      accountNumber: accountNumber,
+      ifscCode: ifscCode,
+      bankName: bankName
+    };
 
     // Make a POST request to create a new account
-    fetch('http://localhost:8080/account/addAccount', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(accountInfo)
-    })
+      fetch('http://localhost:8080/account/addAccount', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(accountInfo)
+      })
       .then(response => {
         if (response.ok) {
           console.log('Account created successfully');
           alert('Account created successfully');
-          navigate('/home');
         } else {
           console.error('Failed to create account');
         }
@@ -87,8 +82,12 @@ function AccountManagement() {
                   className="horizontal-lines"
                   placeholder="Enter Account number"
                   name="accountNumber"
-                  value={accountInfo.accountNumber}
-                  onChange={handleInputChange} />
+                  value={accountNumber}
+                  onChange={
+                    (e) => {
+                      setAccountNumber(e.target.value);
+                    }
+                  } />
               </div>
               <div className="form-group">
 
@@ -97,8 +96,12 @@ function AccountManagement() {
                   className="horizontal-lines"
                   placeholder="Enter IFSC code"
                   name="ifscCode"
-                  value={accountInfo.ifscCode}
-                  onChange={handleInputChange} />
+                  value={ifscCode}
+                  onChange={
+                    (e) => {
+                      setIfscCode(e.target.value);
+                    }
+                  } />
               </div>
               <div className="form-group">
 
@@ -107,8 +110,12 @@ function AccountManagement() {
                   className="horizontal-lines"
                   placeholder="Enter Bank Name"
                   name="bankName"
-                  value={accountInfo.bankName}
-                  onChange={handleInputChange} />
+                  value={bankName}
+                  onChange={
+                    (e) => {
+                      setBankName(e.target.value);
+                    }
+                  } />
               </div>
               <div id="loginicon">
                 <button type="submit" className="btns">Add Account</button>
