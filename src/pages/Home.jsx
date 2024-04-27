@@ -8,6 +8,9 @@ function Home() {
   const mobileNumber = localStorage.getItem('mobileNumber');
   const [wallet, setWallet] = useState({});
   const [accounts, setAccounts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [amount, setAmount] = useState('');
+  const [selectedAccount, setSelectedAccount] = useState('');
   const getWallet = async () => {
     try {
       const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobileNumber}&uuid=${uuid}`, {
@@ -96,7 +99,7 @@ function Home() {
             backgroundColor: 'var(--primary)'
           }} onClick={
             () => {
-              window.location.href = '/fundtransfer';
+              window.location.href = '/deposit';
             }
           }>Deposit Money</button>
           <button className='secondary-btn' style={{
