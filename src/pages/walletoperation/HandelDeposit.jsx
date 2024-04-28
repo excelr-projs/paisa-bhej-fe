@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import './wallet.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router';
 import Header from '../../components/Header';
 
 function HandelDeposit() {
@@ -11,6 +9,8 @@ function HandelDeposit() {
     const [accounts, setAccounts] = useState([]);
     const [amount, setAmount] = useState('');
     const [selectedAccount, setSelectedAccount] = useState('');
+    const navigate = useNavigate();
+
     const getWallet = async () => {
         try {
             const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobileNumber}&uuid=${uuid}`, {
@@ -54,8 +54,7 @@ function HandelDeposit() {
                 })
             });
             const data = await response.json();
-            alert(data.message);
-            getWallet();
+            navigate('/home');
         } catch (err) {
             console.error(err);
             alert("An error occurred. Please try again.");
