@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../colors.css';
 import Header from '../components/Header';
 
+
 function Accounts() {
   const uuid = localStorage.getItem('uuid');
   const mobileNumber = localStorage.getItem('mobileNumber');
