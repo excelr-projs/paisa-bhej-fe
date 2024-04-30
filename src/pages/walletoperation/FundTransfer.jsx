@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../components/Header';
 
 function FundTransfer() {
     const [mobile, setMobile] = useState('');
@@ -50,6 +51,7 @@ function FundTransfer() {
 
     return (
         <div className='container'>
+        <Header />
             <div id="getbalances">
             <div className='row form-group'>
             <div id="wicon"><FontAwesomeIcon icon={faMoneyBillTransfer}/>

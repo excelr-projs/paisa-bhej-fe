@@ -19,7 +19,7 @@ function Header() {
               <li className="nav-item">
                 <button
                   className={`nav-link`}
-                  style={{color: 'white', fontWeight: 'bold'}}
+                  style={{color: 'white'}}
                   onClick={() => navigate('/home')}
                 >
                   Dashboard
@@ -45,7 +45,7 @@ function Header() {
             <form class="form-inline">
               <button
                 className='btn btn-danger my-2 my-sm-0'
-                style={{ marginRight: '10px' }}
+                style={{ marginRight: '10px', backgroundColor: 'transparent', border: 'none', color: 'var(--secondary)', fontWeight: 'bold', fontSize: '18px', cursor: 'pointer' }}
                 onClick={() => {
                   if (window.confirm('Are you sure you want to log out?')) {
                     localStorage.removeItem('uuid');
