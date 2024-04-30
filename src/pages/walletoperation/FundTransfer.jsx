@@ -1,44 +1,52 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
+import { useNavigate } from 'react-router';
 
 function FundTransfer() {
-    const [mobile, setMobile] = useState('');
+    const uuid = localStorage.getItem('uuid');
+    const mobile = localStorage.getItem('mobileNumber');
     const [targetMobile, setTargetMobile] = useState('');
-    const [amount, setAmount] = useState(0);
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
-    const [walletDetails, setWalletDetails] = useState(null);
+    const [amount, setAmount] = useState('');
+    const [walletDetails, setWalletDetails] = useState({});
+    const [targetWalletId, setTargetWalletId] = useState('');
+    const navigate = useNavigate();
 
     const handleFundTransfer = async () => {
         try {
-            const response = await fetch('http://localhost:8080/wallet/fundTransfer', {
+            const response = await fetch("http://localhost:8080/trans/add", {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ sourceMobile: mobile, targetMobile: targetMobile, amount: amount }),
+                body: JSON.stringify({
+                    transactionAmount: parseFloat(amount),
+                    transactionType: "DEBIT",
+                    walletId: walletDetails.walletId,
+                })
             });
-            if (!response.ok) {
-                throw new Error('Failed to transfer funds');
-            }
-            const data = await response.json();
-            console.log('Fund transfer successful:', data);
-            setMessage('Fund transfer successful.');
-            setError('');
-            // Fetch updated wallet details after fund transfer
-            fetchWalletDetails(mobile);
-        } catch (error) {
-            console.error('Error transferring funds:', error);
-            setMessage('');
-            setError('Error transferring funds. Please try again.');
+            await fetchTargetWalletId();
+            const response2 = await fetch("http://localhost:8080/trans/add", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    transactionAmount: parseFloat(amount),
+                    transactionType: "CREDIT",
+                    walletId: targetWalletId,
+                })
+            });
+            alert("Fund Transfer Successful");
+            navigate('/home');
+        } catch (err) {
+            console.error(err);
+            setError("An error occurred. Please try again.");
         }
     };
 
-    const fetchWalletDetails = async (mobile) => {
+    const fetchWalletDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/wallet/balance?mobile=${mobile}`);
+            const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobile}&uuid=${uuid}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch wallet details');
             }
@@ -49,53 +57,62 @@ function FundTransfer() {
         }
     };
 
+    const fetchTargetWalletId = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${targetMobile}&uuid=${uuid}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch target wallet details');
+            }
+            const data = await response.json();
+            setTargetWalletId(data.walletId);
+        } catch (error) {
+            console.error('Error fetching target wallet details:', error);
+        }
+    }
+
+    useEffect(() => {
+        fetchWalletDetails();
+    }, []);
+
     return (
-        <div className='container'>
-        <Header />
-            <div id="getbalances">
-            <div className='row form-group'>
-            <div id="wicon"><FontAwesomeIcon icon={faMoneyBillTransfer}/>
-                <h3 id="wb"> Send Money</h3></div>
-                <div className="col-md-6">
-                    <input
-                        type="text"
-                        className="horizontal-lines"
-                        placeholder="FROM  [MOBILE NUMBER]"
-                        value={mobile}
-                        onChange={(e) => setMobile(e.target.value)}
-                    />
-                </div>
-                <div className="col-md-6">
-                    <input
-                        type="text"
-                        className="horizontal-lines"
-                        placeholder="TO  [MOBILE NUMBER]"
-                        value={targetMobile}
-                        onChange={(e) => setTargetMobile(e.target.value)}
-                    />
-                </div>
-                
-                <div className="col-md-6">
-                    <input
-                        type="number"
-                        className="horizontal-lines"
-                        placeholder="Amount"
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                    />
-                </div>
-                <button onClick={handleFundTransfer} className="getbal"> Transfer</button>
-                <p>{message}</p>
-                <p style={{ color: 'red' }}>{error}</p>
-                {walletDetails && (
-                    <div>
-                        <h4>Updated Wallet Details:</h4>
-                        <p>Mobile: {walletDetails.mobile}</p>
-                        <p>Balance: {walletDetails.balance}</p>
+        <div>
+            <Header />
+            <div className="login">
+                <div >
+                    <div className="loginborder">
+                        <h2>Send Money</h2>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="horizontal-lines"
+                                placeholder="Enter Target Mobile Number"
+                                value={targetMobile}
+                                onChange={(event) => setTargetMobile(event.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="horizontal-lines"
+                                placeholder="Enter Amount"
+                                value={amount}
+                                onChange={(event) => setAmount(event.target.value)}
+                            />
+                        </div>
+                        <div id="loginicon">
+                            <button onClick={
+                                () => {
+                                    if (targetMobile === '' || amount === '') {
+                                        alert('Please fill all the fields');
+                                    } else {
+                                        handleFundTransfer();
+                                    }
+                                }
+                            }>Send</button>
+                        </div>
                     </div>
-                )}
+                </div>
             </div>
-        </div>
         </div>
     );
 }

@@ -74,7 +74,7 @@ function Login() {
                             />
                         </div>
                         <div id="loginicon">
-                            <button type="submit" className="btn">Sign In</button>
+                            <button type="submit">Sign In</button>
                         </div>
                     </form>
                 </div>
