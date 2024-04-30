@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 
 function AccountManagement() {
   const key = localStorage.getItem('uuid');
-  console.log(key);
   const mobileNumber = localStorage.getItem('mobileNumber');
   const [walletId, setWalletId] = useState(0);
   const [ifscCode, setIfscCode] = useState('');
@@ -18,7 +17,6 @@ function AccountManagement() {
         method: 'GET'
       });
       const data = await response.json();
-      console.log(data.walletId);
       setWalletId(data.walletId);
     } catch (err) {
       console.error(err);

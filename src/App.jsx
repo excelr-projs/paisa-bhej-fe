@@ -5,7 +5,6 @@ import Register from './pages/Register';
 import Login from './pages/login'; 
 import CreateAccountForm from './pages/CreateAccountForm';
 import TransactionComponent from './pages/TransactionComponent';
-import Wallet from './pages/Wallet';
 import FundTransfer from './pages/walletoperation/FundTransfer';
 import HandelDeposit from './pages/walletoperation/HandelDeposit';
 import UpdateCostumer from './pages/UpdateCostumer';
@@ -24,7 +23,6 @@ function App() {
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/transaction" element={<TransactionComponent />} />
             <Route path='/update' element={<UpdateCostumer/>}/>
-            <Route path="/wallet" element={<Wallet />}/>
             <Route path="/fundtransfer" element={<FundTransfer />} />
             <Route path="/deposit" element={<HandelDeposit />} />
           </Routes>
