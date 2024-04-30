@@ -3,7 +3,7 @@ import ArrowCircleUpRoundedIcon from '@mui/icons-material/ArrowCircleUpRounded';
 import WalletIcon from '@mui/icons-material/Wallet';
 import React, { useEffect, useState } from 'react';
 import '../colors.css';
-import Header from '../components/Header';
+import Header from '../components/header';
 
 function Home() {
   const uuid = localStorage.getItem('uuid');
@@ -37,7 +37,7 @@ function Home() {
       alert("An error occurred. Please try again.");
     }
   }
-  
+
   const getTransactions = async (walletId) => {
     try {
       const response = await fetch(`https://paisa-bhej-backend.onrender.com/trans/get?wallet_id=${walletId}`, {

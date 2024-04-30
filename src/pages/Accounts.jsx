@@ -1,7 +1,7 @@
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import React, { useEffect, useState } from 'react';
 import '../colors.css';
-import Header from '../components/Header';
+import Header from '../components/header';
 
 
 function Accounts() {
