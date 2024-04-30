@@ -37,6 +37,7 @@ function Home() {
       alert("An error occurred. Please try again.");
     }
   }
+  
   const getTransactions = async (walletId) => {
     try {
       const response = await fetch(`https://paisa-bhej-backend.onrender.com/trans/get?wallet_id=${walletId}`, {
