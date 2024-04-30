@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Register.css';
-import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const [employeename, setEmployeename] = useState("");
@@ -13,7 +12,7 @@ function Register() {
     async function handleRegister(event) {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:8080/customer/register", {
+            const response = await fetch("https://paisa-bhej-backend.onrender.com/customer/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

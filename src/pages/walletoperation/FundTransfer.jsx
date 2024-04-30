@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../components/Header';
 import { useNavigate } from 'react-router';
+import Header from '../../components/Header';
 
 function FundTransfer() {
     const uuid = localStorage.getItem('uuid');
@@ -13,7 +13,7 @@ function FundTransfer() {
 
     const handleFundTransfer = async () => {
         try {
-            const response = await fetch("http://localhost:8080/trans/add", {
+            const response = await fetch("https://paisa-bhej-backend.onrender.com/trans/add", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ function FundTransfer() {
                 })
             });
             await fetchTargetWalletId();
-            const response2 = await fetch("http://localhost:8080/trans/add", {
+            const response2 = await fetch("https://paisa-bhej-backend.onrender.com/trans/add", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ function FundTransfer() {
 
     const fetchWalletDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobile}&uuid=${uuid}`);
+            const response = await fetch(`https://paisa-bhej-backend.onrender.com/wallet/getWallet?mobile=${mobile}&uuid=${uuid}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch wallet details');
             }
@@ -59,7 +59,7 @@ function FundTransfer() {
 
     const fetchTargetWalletId = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${targetMobile}&uuid=${uuid}`);
+            const response = await fetch(`https://paisa-bhej-backend.onrender.com/wallet/getWallet?mobile=${targetMobile}&uuid=${uuid}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch target wallet details');
             }

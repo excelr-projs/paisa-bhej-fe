@@ -1,9 +1,9 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './update.css';
 
 function UpdateCostumer() {
 
-    // State variables to hold customer data
+  // State variables to hold customer data
   const [customer, setCustomer] = useState({
     name: '',
     mobileNumber: '',
@@ -19,10 +19,10 @@ function UpdateCostumer() {
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Assuming you have an API endpoint to update customer details
     try {
-      const response = await fetch('http://localhost:8080/customer/updateCustomer', {
+      const response = await fetch('https://paisa-bhej-backend.onrender.com/customer/updateCustomer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,54 +44,54 @@ function UpdateCostumer() {
 
   return (
     <div className="updateborder">
-    <div className="row">
-      <div id="headerU">
-    <h2>Update Customer</h2>
-    </div>
-    <form onSubmit={handleSubmit}>
-      <label className="form-group">
-        
-        <input
-          type="text"
-          className="formcontrolU"
-          placeholder="Enter Name"
-          name="name"
-          value={customer.name}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label className="form-group">
-        
-        <input
-          type="text"
-          className="formcontrolU"
-          placeholder="Enter Mobile Nmber"
-          name="mobileNumber"
-          value={customer.mobileNumber}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label className="form-group">
-       
-        <input
-          type="password"
-          className="formcontrolU"
-          placeholder="Enter Password "
-          name="password"
-          value={customer.password}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <div id="updateicon">
-      <button type="submit" className="btns">Update</button>
+      <div className="row">
+        <div id="headerU">
+          <h2>Update Customer</h2>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <label className="form-group">
+
+            <input
+              type="text"
+              className="formcontrolU"
+              placeholder="Enter Name"
+              name="name"
+              value={customer.name}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label className="form-group">
+
+            <input
+              type="text"
+              className="formcontrolU"
+              placeholder="Enter Mobile Nmber"
+              name="mobileNumber"
+              value={customer.mobileNumber}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label className="form-group">
+
+            <input
+              type="password"
+              className="formcontrolU"
+              placeholder="Enter Password "
+              name="password"
+              value={customer.password}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <div id="updateicon">
+            <button type="submit" className="btns">Update</button>
+          </div>
+        </form>
       </div>
-    </form>
     </div>
-  </div>
-);
+  );
 }
 
 export default UpdateCostumer

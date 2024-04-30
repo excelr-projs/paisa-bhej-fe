@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import WalletIcon from '@mui/icons-material/Wallet';
-import ArrowCircleUpRoundedIcon from '@mui/icons-material/ArrowCircleUpRounded';
 import ArrowCircleDownRoundedIcon from '@mui/icons-material/ArrowCircleDownRounded';
+import ArrowCircleUpRoundedIcon from '@mui/icons-material/ArrowCircleUpRounded';
+import WalletIcon from '@mui/icons-material/Wallet';
+import React, { useEffect, useState } from 'react';
 import '../colors.css';
 import Header from '../components/Header';
 
@@ -13,7 +13,7 @@ function Home() {
   const [transactions, setTransactions] = useState([]);
   const getWallet = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobileNumber}&uuid=${uuid}`, {
+      const response = await fetch(`https://paisa-bhej-backend.onrender.com/wallet/getWallet?mobile=${mobileNumber}&uuid=${uuid}`, {
         method: 'GET'
       });
       const data = await response.json();
@@ -27,7 +27,7 @@ function Home() {
   }
   const getAccounts = async (walletId) => {
     try {
-      const response = await fetch(`http://localhost:8080/account/viewAccounts?walletId=${walletId}&key=${uuid}`, {
+      const response = await fetch(`https://paisa-bhej-backend.onrender.com/account/viewAccounts?walletId=${walletId}&key=${uuid}`, {
         method: 'GET'
       });
       const data = await response.json();
@@ -39,7 +39,7 @@ function Home() {
   }
   const getTransactions = async (walletId) => {
     try {
-      const response = await fetch(`http://localhost:8080/trans/get?wallet_id=${walletId}`, {
+      const response = await fetch(`https://paisa-bhej-backend.onrender.com/trans/get?wallet_id=${walletId}`, {
         method: 'GET'
       });
       const data = await response.json();

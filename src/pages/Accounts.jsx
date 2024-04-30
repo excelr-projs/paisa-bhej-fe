@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
+import React, { useEffect, useState } from 'react';
 import '../colors.css';
 import Header from '../components/Header';
 
@@ -10,7 +10,7 @@ function Accounts() {
   const [accounts, setAccounts] = useState([]);
   const getWallet = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobileNumber}&uuid=${uuid}`, {
+      const response = await fetch(`https://paisa-bhej-backend.onrender.com/wallet/getWallet?mobile=${mobileNumber}&uuid=${uuid}`, {
         method: 'GET'
       });
       const data = await response.json();
@@ -23,7 +23,7 @@ function Accounts() {
   }
   const getAccounts = async (walletId) => {
     try {
-      const response = await fetch(`http://localhost:8080/account/viewAccounts?walletId=${walletId}&key=${uuid}`, {
+      const response = await fetch(`https://paisa-bhej-backend.onrender.com/account/viewAccounts?walletId=${walletId}&key=${uuid}`, {
         method: 'GET'
       });
       const data = await response.json();
@@ -35,7 +35,7 @@ function Accounts() {
   }
   const deleteAccount = async (accountId) => {
     try {
-      const response = await fetch(`http://localhost:8080/account/removeAccount`, {
+      const response = await fetch(`https://paisa-bhej-backend.onrender.com/account/removeAccount`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

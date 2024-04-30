@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import Header from '../components/Header';
 
 function AccountManagement() {
   const key = localStorage.getItem('uuid');
@@ -13,7 +13,7 @@ function AccountManagement() {
 
   const getWalletId = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/wallet/getWallet?mobile=${mobileNumber}&uuid=${key}`, {
+      const response = await fetch(`https://paisa-bhej-backend.onrender.com/wallet/getWallet?mobile=${mobileNumber}&uuid=${key}`, {
         method: 'GET'
       });
       const data = await response.json();
@@ -35,13 +35,13 @@ function AccountManagement() {
     };
 
     // Make a POST request to create a new account
-      fetch('http://localhost:8080/account/addAccount', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(accountInfo)
-      })
+    fetch('https://paisa-bhej-backend.onrender.com/account/addAccount', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(accountInfo)
+    })
       .then(response => {
         if (response.ok) {
           console.log('Account created successfully');
